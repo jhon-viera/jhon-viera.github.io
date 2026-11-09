@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f3527'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='800' font-size='28' fill='%23eaf5ef' text-anchor='middle'%3EJV%3C/text%3E%3Ccircle cx='52' cy='52' r='8' fill='%2325d366'/%3E%3C/svg%3E">
+<meta property="og:title" content="Jhon Viera · Páginas web y sistemas POS"><meta property="og:description" content="Páginas web y sistemas de ventas para negocios que venden por WhatsApp."><meta property="og:image" content="https://jhon-viera.github.io/img/dulce-antojo.jpg"><meta property="og:url" content="https://jhon-viera.github.io/"><meta name="theme-color" content="#0f3527">
+<title>Jhon Viera · Páginas web y sistemas POS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Páginas web y sistemas POS para negocios que venden por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,700;62..125,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: columna de 1160px; franjas a todo lo ancho que alternan fondo claro y verde profundo; tarjetas solo para objetos (proyecto, plan). */
+:root{
+  --bg:#f6f8f5; --surface:#ffffff; --ink:#13201a; --muted:#56675e; --line:#dde5df;
+  --accent:#0b7a51; --accent-ink:#ffffff; --wa:#25d366; --sun:#f0ae2c; --soft:#e8f2ec;
+  --band:#0f3527; --band-2:#14402f; --band-ink:#eaf5ef; --band-muted:#a9c7b7;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:20px; --shadow:0 1px 2px rgba(16,40,28,.06),0 12px 32px -12px rgba(16,40,28,.18);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1411; --surface:#141f1a; --ink:#e7f0ea; --muted:#9bb0a5; --line:#24332c;
+  --accent:#3ccf8e; --accent-ink:#06261a; --soft:#162820; --band:#09251b; --band-2:#0e3124; --band-ink:#e3f3ea; --band-muted:#94b8a5;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -14px rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1411; --surface:#141f1a; --ink:#e7f0ea; --muted:#9bb0a5; --line:#24332c;
+  --accent:#3ccf8e; --accent-ink:#06261a; --soft:#162820; --band:#09251b; --band-2:#0e3124; --band-ink:#e3f3ea; --band-muted:#94b8a5;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -14px rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.62 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.04;text-wrap:balance;margin:0}
+h2{font-size:clamp(34px,5vw,54px);font-weight:800;font-stretch:112%;letter-spacing:-.015em}
+h3{font-size:23px;font-weight:700;font-stretch:105%}
+p{margin:0}
+a{color:inherit}
+.eyebrow{font:600 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lead{color:var(--muted);font-size:19px;max-width:60ch}
+section{padding-block:clamp(72px,9vw,120px)}
+.sec-head{display:grid;gap:14px;margin-bottom:48px}
+.dark{background:var(--band);color:var(--band-ink)}
+.dark .eyebrow{color:var(--sun)}
+.dark .lead{color:var(--band-muted)}
+.ico{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font:600 16px/1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn:focus-visible,.seg button:focus-visible,.copy:focus-visible,summary:focus-visible,.nav a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.btn-wa{background:var(--wa);color:#04301a;box-shadow:0 8px 20px -8px rgba(37,211,102,.7)}
+.btn-wa:hover{filter:brightness(.96);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--accent)}
+.wa-ico{width:20px;height:20px;flex:none}
+
+/* cabecera */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark{width:40px;height:40px;border-radius:12px;background:var(--band);color:var(--band-ink);display:grid;place-items:center;font:800 17px/1 var(--display);font-stretch:90%;letter-spacing:-.02em;position:relative}
+.mark::after{content:"";position:absolute;right:-3px;bottom:-3px;width:12px;height:12px;border-radius:50%;background:var(--wa);border:2.5px solid var(--bg)}
+.brand b{display:block;font:800 19px/1.1 var(--display);font-stretch:112%}
+.brand small{display:block;font-size:12.5px;color:var(--muted);line-height:1.2}
+.nav nav{display:flex;gap:28px;font-weight:500;font-size:16px}
+.nav nav a{text-decoration:none;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+.nav .btn{padding:11px 18px;font-size:15px}
+@media (max-width:860px){.nav nav{display:none}}
+@media (max-width:420px){.brand small{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:clamp(48px,7vw,88px) clamp(56px,8vw,96px)}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800;font-stretch:118%;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.avail{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--muted);margin-bottom:22px}
+.avail i{width:9px;height:9px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 4px color-mix(in srgb,var(--wa) 22%,transparent)}
+.hero .lead{margin-top:22px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.proof{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 36px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.proof div{display:grid;gap:2px}
+.proof b{font:800 30px/1 var(--display);font-stretch:110%;font-variant-numeric:tabular-nums}
+.proof span{font-size:14px;color:var(--muted)}
+@media (max-width:480px){.proof{grid-template-columns:repeat(2,auto)}}
+.stage{position:relative;aspect-ratio:1/1;max-width:540px;width:100%;justify-self:center}
+.stage::before{content:"";position:absolute;inset:6% 4% 10% 8%;border-radius:36px;background:linear-gradient(150deg,var(--band-2),var(--band));}
+.laptop{position:absolute;left:0;top:18%;width:86%;border-radius:14px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);border:1px solid var(--line)}
+.laptop .bar{height:24px;background:var(--soft);display:flex;align-items:center;gap:6px;padding:0 10px}
+.laptop .bar b{width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:.4}
+.laptop img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.phone{position:absolute;right:0;bottom:2%;width:34%;border-radius:26px;border:6px solid #0d1310;background:#0d1310;overflow:hidden;box-shadow:0 30px 50px -18px rgba(5,25,15,.55)}
+.phone img{display:block;width:100%;aspect-ratio:390/780;object-fit:cover;object-position:top}
+.badge{position:absolute;left:4%;bottom:6%;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;background:var(--surface);box-shadow:var(--shadow);font-size:14px;font-weight:600;border:1px solid var(--line)}
+.badge .wa-ico{color:var(--wa);width:26px;height:26px}
+.badge small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.stage{max-width:460px}}
+
+/* servicios */
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:color-mix(in srgb,var(--band-ink) 10%,transparent);border-radius:var(--r);overflow:hidden}
+.svc{background:var(--band);padding:30px 26px;display:grid;gap:12px;align-content:start}
+.svc .ico{width:30px;height:30px;color:var(--sun)}
+.svc p{color:var(--band-muted);font-size:16px}
+@media (max-width:900px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.services{grid-template-columns:1fr}}
+
+/* trabajos */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.shot{background:var(--soft);padding:22px 22px 0;overflow:hidden}
+.shot .frame{border-radius:12px 12px 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:0;background:var(--surface)}
+.shot .bar{height:26px;background:var(--line);display:flex;align-items:center;gap:6px;padding:0 10px}
+.shot .bar b{width:9px;height:9px;border-radius:50%;background:var(--muted);opacity:.45}
+.shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .5s}
+.work:hover .shot img{transform:scale(1.02)}
+.work .body{padding:26px;display:grid;gap:12px;flex:1;align-content:start}
+.tag{font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.work p{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:13px;font-weight:500;padding:5px 11px;border-radius:999px;background:var(--soft);color:var(--ink)}
+.work .link{margin-top:4px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.work .link:hover{text-decoration:underline}
+.work .note{font-size:14.5px;display:flex;gap:8px;align-items:center;color:var(--muted)}
+.work .note i{width:8px;height:8px;border-radius:50%;background:var(--wa)}
+@media (max-width:760px){.works{grid-template-columns:1fr}}
+
+/* precios */
+.seg{display:inline-flex;background:color-mix(in srgb,var(--band-ink) 10%,transparent);border-radius:999px;padding:5px;gap:4px;margin-top:10px;flex-wrap:wrap;justify-self:start}
+.seg button{font:600 15px/1 var(--body);border:0;border-radius:999px;padding:12px 18px;background:transparent;color:var(--band-ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--sun);color:#2a1d00}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.plan{background:var(--surface);color:var(--ink);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:18px;position:relative}
+.plan.pop{outline:3px solid var(--sun)}
+.plan .flag{position:absolute;top:-13px;left:30px;background:var(--sun);color:#2a1d00;font:700 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.plan .ex{font-size:14px;color:var(--muted);margin-top:6px}
+.price{font:800 42px/1 var(--display);font-stretch:108%;font-variant-numeric:tabular-nums}
+.price small{display:block;font:500 14px/1.4 var(--body);color:var(--muted);margin-top:8px;font-stretch:100%}
+.plan ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15.5px}
+.plan li{display:flex;gap:10px}
+.plan li svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--accent);stroke:currentColor;fill:none;stroke-width:2.4}
+.plan li.off{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 50%,transparent)}
+.plan li.off svg{color:var(--line)}
+.plan .btn{margin-top:auto;justify-content:center}
+.pos{margin-top:20px;background:var(--surface);color:var(--ink);border-radius:var(--r);padding:30px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;align-items:center}
+.pos .opt{border-left:1px solid var(--line);padding-left:28px;display:grid;gap:8px}
+.pos .opt .price{font-size:34px}
+.note-band{margin-top:26px;font-size:15.5px;color:var(--band-muted);max-width:80ch}
+@media (max-width:900px){.plans{grid-template-columns:1fr}.pos{grid-template-columns:1fr}.pos .opt{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}}
+
+/* mantenimiento */
+.maint{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:start}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:16px}
+th,td{text-align:left;padding:16px 22px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--soft)}
+td.num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child>*{border-bottom:0}
+.plan-m{background:var(--band);color:var(--band-ink);border-radius:var(--r);padding:30px;display:grid;gap:16px}
+.plan-m .price small{color:var(--band-muted)}
+.plan-m ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;color:var(--band-muted)}
+.plan-m li::before{content:"—";color:var(--sun);margin-right:10px}
+@media (max-width:900px){.maint{grid-template-columns:1fr}}
+
+/* comparación */
+.cmp table{min-width:640px}
+.cmp tbody th{font-weight:600;color:var(--muted);width:24%}
+.cmp thead th:not(:first-child){color:var(--ink);font-family:var(--display);font-size:16px;letter-spacing:0;text-transform:none}
+.tip{margin-top:18px;font-size:15px;color:var(--muted);max-width:80ch}
+
+/* proceso */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;display:grid;gap:12px;align-content:start}
+.steps li::before{content:counter(s);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 19px/1 var(--display);background:var(--soft);color:var(--accent);border:1px solid var(--line)}
+.steps p{color:var(--muted);font-size:16px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* preguntas */
+.faq{display:grid;gap:12px;max-width:860px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px}
+summary{list-style:none;cursor:pointer;padding:20px 24px;font:700 18px/1.3 var(--display);font-stretch:104%;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:500 26px/1 var(--body);color:var(--accent);flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 24px 22px;color:var(--muted)}
+
+/* contacto */
+.contact .box{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;background:linear-gradient(150deg,var(--band-2),var(--band));color:var(--band-ink);border-radius:28px;padding:clamp(28px,5vw,56px)}
+.contact .eyebrow{color:var(--sun)}
+.num{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+.num strong{font:800 clamp(32px,5vw,48px)/1 var(--display);font-stretch:110%;font-variant-numeric:tabular-nums;user-select:all}
+.copy{font:600 14px/1 var(--body);padding:10px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--band-ink) 30%,transparent);background:transparent;color:var(--band-ink);cursor:pointer}
+.contact .side{display:grid;gap:18px;justify-items:start}
+.contact .side p{color:var(--band-muted)}
+@media (max-width:760px){.contact .box{grid-template-columns:1fr}}
+footer{padding-block:36px;color:var(--muted);font-size:14.5px;border-top:1px solid var(--line);margin-top:clamp(56px,8vw,96px)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+/* botón flotante */
+.float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:15;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#04301a;display:grid;place-items:center;box-shadow:0 10px 26px -6px rgba(37,211,102,.75)}
+.float .wa-ico{width:30px;height:30px}
+@media (prefers-reduced-motion:no-preference){.btn,.seg button{transition:background .2s,filter .2s,border-color .2s,transform .2s}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.shot img{transition:none}}
+img{max-width:100%}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-web" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11h10.2L20 8H6.2"/><circle cx="9.5" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></symbol>
+  <symbol id="i-pos" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h0M15 11h1M8 15h2M12 15h0M15 15h1"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.3-.5-.5-2.3z"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Jhon Viera, inicio"><span class="mark">JV</span><span><b>Jhon Viera</b><small>Páginas web y sistemas POS</small></span></a>
+    <nav aria-label="Secciones"><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a></nav>
+    <a class="btn btn-wa" href="https://wa.me/573186288460?text=Hola%20Jhon%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>Cotizar</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="wrap hero">
+    <div>
+      <p class="avail"><i></i>Recibiendo proyectos nuevos</p>
+      <h1>Tu negocio vende por WhatsApp. <em>Tu página también.</em></h1>
+      <p class="lead">Diseño páginas web y sistemas de ventas para tiendas, droguerías, emprendimientos y bares. Tus clientes ven tus productos, preguntan y te piden directo al WhatsApp.</p>
+      <div class="ctas">
+        <a class="btn btn-wa" href="https://wa.me/573186288460?text=Hola%20Jhon%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>Cotizar mi página</a>
+        <a class="btn btn-ghost" href="#trabajos">Ver trabajos</a>
+      </div>
+      <div class="proof">
+        <div><b>4</b><span>proyectos en uso real</span></div>
+        <div><b>$0</b><span>de mensualidad con GitHub</span></div>
+        <div><b>1 mes</b><span>de ajustes incluidos</span></div>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="laptop"><div class="bar"><b></b><b></b><b></b></div><img src="img/dulce-antojo.jpg" alt=""></div>
+      <div class="phone"><img src="img/m-farmacia.jpg" alt=""></div>
+      <div class="badge"><svg class="wa-ico"><use href="#wa"/></svg><span>Nuevo pedido<small>Caja sorpresa × 2</small></span></div>
+    </div>
+  </div>
+
+  <section id="servicios" class="dark">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Lo que hago por tu negocio</h2>
+      </div>
+      <div class="services">
+        <div class="svc"><svg class="ico"><use href="#i-web"/></svg><h3>Páginas informativas</h3><p>Servicios, horarios, ubicación y un formulario que te llega al WhatsApp.</p></div>
+        <div class="svc"><svg class="ico"><use href="#i-cart"/></svg><h3>Catálogos con pedidos</h3><p>Tus productos con fotos y precios, y un carrito que arma el pedido por ti.</p></div>
+        <div class="svc"><svg class="ico"><use href="#i-pos"/></svg><h3>Sistemas POS</h3><p>Ventas, mesas, inventario, fiados y cierre de caja para bares y tiendas.</p></div>
+        <div class="svc"><svg class="ico"><use href="#i-tool"/></svg><h3>Mantenimiento</h3><p>Cambio precios, fotos y productos cuando lo necesites, por cambio o por mes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trabajos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Trabajos</p>
+        <h2>Proyectos para negocios reales</h2>
+        <p class="lead">Cada uno resuelve algo concreto del día a día: recibir pedidos, responder consultas o llevar las cuentas.</p>
+      </div>
+      <div class="works">
+        <article class="work">
+          <div class="shot"><div class="frame"><div class="bar"><b></b><b></b><b></b></div><img src="img/pos.jpg" alt="Resumen del día del sistema POS con ventas, ganancia y productos más vendidos" loading="lazy"></div></div>
+          <div class="body">
+            <p class="tag">Sistema POS · bar y tienda</p>
+            <h3>Sistema de ventas para estanquillo</h3>
+            <p>Los meseros toman pedidos por mesa desde el celular y la caja cobra por persona o por mesa. Lleva fiados con cupo, inventario con alertas de stock bajo, compras a proveedores y cierre de caja. El dueño recibe el resumen del día por WhatsApp.</p>
+            <div class="chips"><span>Python</span><span>Flask</span><span>MySQL</span><span>App en el celular</span></div>
+            <p class="note"><i></i>En uso diario en un negocio real · demo por videollamada</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="shot"><div class="frame"><div class="bar"><b></b><b></b><b></b></div><img src="img/dulce-antojo.jpg" alt="Página de inicio de Dulce Antojo con catálogo de detalles y regalos" loading="lazy"></div></div>
+          <div class="body">
+            <p class="tag">Tienda online · emprendimiento</p>
+            <h3>Dulce Antojo</h3>
+            <p>Siete secciones para un negocio de detalles y regalos: cajas sorpresa, bandejas, decoraciones y alquiler para eventos. El cliente arma su pedido en un carrito y lo envía directo por WhatsApp.</p>
+            <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <a class="link" href="https://jhon-viera.github.io/INDEX/" target="_blank" rel="noopener">Ver la página →</a>
+          </div>
+        </article>
+        <article class="work">
+          <div class="shot"><div class="frame"><div class="bar"><b></b><b></b><b></b></div><img src="img/farmacia.jpg" alt="Página de Farmacia Medisalud con formulario de consulta de disponibilidad" loading="lazy"></div></div>
+          <div class="body">
+            <p class="tag">Negocio local · droguería</p>
+            <h3>Farmacia Medisalud</h3>
+            <p>El cliente pregunta si hay un medicamento antes de ir, y la consulta llega lista al WhatsApp de la droguería. Muestra servicios, horarios y cómo llegar.</p>
+            <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <a class="link" href="https://jhon-viera.github.io/FARMACIA/" target="_blank" rel="noopener">Ver la página →</a>
+          </div>
+        </article>
+        <article class="work">
+          <div class="shot"><div class="frame"><div class="bar"><b></b><b></b><b></b></div><img src="img/calcomanias.jpg" alt="Panel del vendedor de la tienda de calcomanías con productos, precios y stock" loading="lazy"></div></div>
+          <div class="body">
+            <p class="tag">Catálogo administrable</p>
+            <h3>Tienda de calcomanías</h3>
+            <p>Catálogo con categorías, precios y stock, y pedidos por WhatsApp. El vendedor tiene su propio panel para subir fotos y cambiar precios sin tocar código, y sin pagar hosting.</p>
+            <div class="chips"><span>JavaScript</span><span>API de GitHub</span><span>GitHub Pages</span></div>
+            <a class="link" href="https://jhon-viera.github.io/calcomanias/" target="_blank" rel="noopener">Ver la página →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="precios" class="dark">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Precios</p>
+        <h2>Escoge tu página y dónde publicarla</h2>
+        <p class="lead">El diseño se paga una sola vez. Luego decides si la publicamos gratis en GitHub o en un hosting pago con dominio y correo propios.</p>
+        <div class="seg" role="group" aria-label="Dónde publicar la página">
+          <button type="button" id="opt-gh" aria-pressed="true" data-mode="gh">GitHub · sin mensualidad</button>
+          <button type="button" id="opt-host" aria-pressed="false" data-mode="host">Hosting pago · dominio propio</button>
+        </div>
+      </div>
+
+      <div class="plans">
+        <article class="plan">
+          <div><h3>Página informativa</h3><p class="ex">Como la de Farmacia Medisalud</p></div>
+          <div class="price" data-gh="$350.000" data-host="$450.000">$350.000<small data-gh="Pago único · publicación incluida" data-host="Pago único con configuración + hosting al proveedor">Pago único · publicación incluida</small></div>
+          <ul>
+            <li><svg><use href="#ok"/></svg>Secciones de servicios, horarios y ubicación</li>
+            <li><svg><use href="#ok"/></svg>Formulario que envía la consulta a tu WhatsApp</li>
+            <li><svg><use href="#ok"/></svg>Botón flotante de WhatsApp y llamada</li>
+            <li><svg><use href="#ok"/></svg>Diseño adaptado al celular</li>
+            <li data-on="host"><svg><use href="#ok"/></svg>Dominio propio y correo del negocio</li>
+          </ul>
+          <a class="btn btn-wa" href="https://wa.me/573186288460?text=Hola%20Jhon%2C%20me%20interesa%20la%20p%C3%A1gina%20informativa" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>La quiero</a>
+        </article>
+        <article class="plan pop">
+          <span class="flag">El más pedido</span>
+          <div><h3>Catálogo con pedidos</h3><p class="ex">Como la de Dulce Antojo</p></div>
+          <div class="price" data-gh="$650.000" data-host="$750.000">$650.000<small data-gh="Pago único · publicación incluida" data-host="Pago único con configuración + hosting al proveedor">Pago único · publicación incluida</small></div>
+          <ul>
+            <li><svg><use href="#ok"/></svg>Hasta 7 secciones o categorías de productos</li>
+            <li><svg><use href="#ok"/></svg>Carrito que arma el pedido y lo envía por WhatsApp</li>
+            <li><svg><use href="#ok"/></svg>Galería de fotos y videos de tus trabajos</li>
+            <li><svg><use href="#ok"/></svg>Diseño adaptado al celular</li>
+            <li data-on="host"><svg><use href="#ok"/></svg>Dominio propio y correo del negocio</li>
+          </ul>
+          <a class="btn btn-wa" href="https://wa.me/573186288460?text=Hola%20Jhon%2C%20me%20interesa%20el%20cat%C3%A1logo%20con%20pedidos" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>La quiero</a>
+        </article>
+        <article class="plan">
+          <div><h3>Catálogo administrable</h3><p class="ex">Como la tienda de calcomanías</p></div>
+          <div class="price" data-gh="$950.000" data-host="$1.050.000">$950.000<small data-gh="Pago único · publicación incluida" data-host="Pago único con configuración + hosting al proveedor">Pago único · publicación incluida</small></div>
+          <ul>
+            <li><svg><use href="#ok"/></svg>Todo lo del catálogo con pedidos</li>
+            <li><svg><use href="#ok"/></svg>Panel para que tú cambies precios, stock y fotos</li>
+            <li><svg><use href="#ok"/></svg>Productos por categorías con buscador</li>
+            <li><svg><use href="#ok"/></svg>Capacitación para usar el panel</li>
+            <li data-on="host"><svg><use href="#ok"/></svg>Dominio propio y correo del negocio</li>
+          </ul>
+          <a class="btn btn-wa" href="https://wa.me/573186288460?text=Hola%20Jhon%2C%20me%20interesa%20el%20cat%C3%A1logo%20administrable" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>La quiero</a>
+        </article>
+      </div>
+
+      <article class="pos">
+        <div>
+          <h3>Sistema POS para tu negocio</h3>
+          <p class="ex" style="color:var(--muted);margin-top:8px">Mesas, pedidos desde el celular, caja, fiados, inventario y cierre de caja. Funciona en la nube o instalado en tu computador.</p>
+        </div>
+        <div class="opt"><span class="tag">Arriendo</span><div class="price">$50.000<small>al mes · nube, actualizaciones y soporte</small></div></div>
+        <div class="opt"><span class="tag">Licencia</span><div class="price">$500.000<small>pago único · instalado en tu computador · 2 meses de soporte</small></div></div>
+      </article>
+      <p class="note-band" id="host-note">Con GitHub la página queda publicada sin mensualidad. Si quieres una dirección propia, solo pagas el dominio, aprox. USD 20 a 35 al año.</p>
+    </div>
+  </section>
+
+  <section id="mantenimiento">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Después de la entrega</p>
+        <h2>Actualizaciones y mantenimiento</h2>
+        <p class="lead">El primer mes los ajustes pequeños van sin costo. Después pagas solo lo que necesites cambiar, o tomas el plan mensual.</p>
+      </div>
+      <div class="maint">
+        <div class="tablebox">
+          <table>
+            <thead><tr><th scope="col">Cambio</th><th scope="col" style="text-align:right">Precio</th></tr></thead>
+            <tbody>
+              <tr><td>Un precio, un texto, el horario o el número</td><td class="num">$20.000</td></tr>
+              <tr><td>Cambiar o agregar fotos, hasta 5</td><td class="num">$30.000</td></tr>
+              <tr><td>Agregar productos al catálogo</td><td class="num">$10.000 c/u<br><span style="font-weight:400;color:var(--muted);font-size:14px">o $60.000 hasta 10</span></td></tr>
+              <tr><td>Sección nueva, como Promociones o Domicilios</td><td class="num">$80.000 a $150.000</td></tr>
+              <tr><td>Cambios grandes o rediseño</td><td class="num">$40.000 / hora</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="plan-m">
+          <span class="tag" style="color:var(--sun)">Plan mensual</span>
+          <div class="price">$50.000<small>al mes</small></div>
+          <ul>
+            <li>Hasta 5 cambios pequeños al mes</li>
+            <li>Respuesta en menos de 48 horas</li>
+            <li>Revisión de que todo funcione en el celular</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparar" style="padding-top:0">
+    <div class="wrap cmp">
+      <div class="sec-head">
+        <p class="eyebrow">GitHub o hosting pago</p>
+        <h2>¿Cuál te conviene?</h2>
+      </div>
+      <div class="tablebox">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">GitHub Pages</th><th scope="col">Hosting pago</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Costo mensual</th><td>$0</td><td>Desde $6.900 al mes en Hostinger, pagando 4 años por adelantado ($331.200). Al renovar sube a $29.900 al mes.</td></tr>
+            <tr><th scope="row">Dirección web</th><td>Gratis tipo <b>usuario.github.io/tunegocio</b>, o tu propio dominio pagando solo el dominio</td><td>Dominio propio, como <b>tunegocio.com</b>, gratis el primer año</td></tr>
+            <tr><th scope="row">Correo del negocio</th><td>No incluye</td><td>Sí, como <b>ventas@tunegocio.com</b></td></tr>
+            <tr><th scope="row">Quién paga el servicio</th><td>Nadie, es gratis</td><td>Tú, directo al proveedor y a tu nombre. Yo lo configuro por $100.000</td></tr>
+            <tr><th scope="row">Ideal para</th><td>Empezar sin gastos fijos</td><td>Negocios que quieren verse más formales o necesitan correo propio</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tip">Precios de hosting de referencia de Hostinger Colombia en noviembre de 2026; pueden cambiar. Antes de contratar te confirmo el valor del día.</p>
+    </div>
+  </section>
+
+  <section id="proceso" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo trabajo</p>
+        <h2>De la idea a tu página publicada</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Hablamos</h3><p>Me cuentas por WhatsApp qué vendes y qué necesitas. Te mando la propuesta con precio y tiempo de entrega.</p></li>
+        <li><h3>Anticipo</h3><p>Pagas el 50% para empezar y me envías logo, fotos, precios y textos de tu negocio.</p></li>
+        <li><h3>Diseño y ajustes</h3><p>Te muestro avances y hacemos hasta dos rondas de cambios hasta que te guste.</p></li>
+        <li><h3>Entrega</h3><p>Pagas el otro 50%, la publico y te acompaño un mes con ajustes pequeños sin costo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="preguntas" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2>Lo que más me preguntan</h2>
+      </div>
+      <div class="faq">
+        <details><summary>¿Cuánto se demora mi página?</summary><p>Una página informativa toma entre 5 y 8 días, y un catálogo entre 1 y 2 semanas. El tiempo empieza cuando me envías las fotos y los textos.</p></details>
+        <details><summary>¿Tengo que pagar algo cada mes?</summary><p>No, si la publicamos en GitHub. Solo pagarías si escoges hosting pago con dominio propio, o si quieres el plan mensual de mantenimiento.</p></details>
+        <details><summary>¿Qué necesito enviarte?</summary><p>Tu logo si lo tienes, fotos de tus productos, la lista de precios, tus horarios y el número de WhatsApp donde quieres recibir los pedidos.</p></details>
+        <details><summary>¿Puedo cambiar los precios yo mismo?</summary><p>Sí, con el catálogo administrable tienes tu propio panel para cambiar precios, stock y fotos desde el celular. En las demás páginas yo hago los cambios por ti.</p></details>
+        <details><summary>¿La página es mía?</summary><p>Sí. Si escoges hosting pago, el dominio y el hosting quedan a tu nombre. Te entrego todo funcionando y con acceso.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact" style="padding-top:0;padding-bottom:0">
+    <div class="wrap">
+      <div class="box">
+        <div>
+          <p class="eyebrow">Contacto</p>
+          <h2 style="margin-top:14px">Cotizamos tu página sin compromiso</h2>
+          <div class="num"><strong id="numero">318 628 8460</strong><button class="copy" type="button" id="copiar">Copiar número</button></div>
+        </div>
+        <div class="side">
+          <p>Escríbeme qué tipo de negocio tienes y te respondo con una propuesta.</p>
+          <a class="btn btn-wa" href="https://wa.me/573186288460?text=Hola%20Jhon%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>Escribir por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Jhon Viera · Páginas web y sistemas POS · Precios en pesos colombianos</span>
+    <a href="https://github.com/jhon-viera" target="_blank" rel="noopener">GitHub: jhon-viera</a>
+  </div>
+</footer>
+
+<a class="float" href="https://wa.me/573186288460?text=Hola%20Jhon%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg class="wa-ico"><use href="#wa"/></svg></a>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.seg button');
+  var notes={gh:'Con GitHub la página queda publicada sin mensualidad. Si quieres una dirección propia, solo pagas el dominio, aprox. USD 20 a 35 al año.',
+             host:'El precio incluye $100.000 por configurar dominio, hosting y correo. El hosting lo pagas tú al proveedor: desde $331.200 por 4 años en Hostinger, con dominio gratis el primer año.'};
+  function set(mode){
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.mode===mode))});
+    document.querySelectorAll('.price[data-gh]').forEach(function(p){
+      var s=p.querySelector('small'); p.firstChild.nodeValue=p.dataset[mode]; s.textContent=s.dataset[mode];
+    });
+    document.querySelectorAll('li[data-on]').forEach(function(li){li.classList.toggle('off',li.dataset.on!==mode)});
+    document.getElementById('host-note').textContent=notes[mode];
+    try{localStorage.setItem('modo-precio',mode)}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.mode)})});
+  var saved=null; try{saved=localStorage.getItem('modo-precio')}catch(e){}
+  set(saved==='host'?'host':'gh');
+  var c=document.getElementById('copiar');
+  c.addEventListener('click',function(){
+    function done(){c.textContent='Copiado'; setTimeout(function(){c.textContent='Copiar número'},1800)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('numero'));var s=getSelection();s.removeAllRanges();s.addRange(r);c.textContent='Selecciónalo y cópialo'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('3186288460').then(done,fallback)}else{fallback()}
+  });
+})();
+</script>
+</body></html>
